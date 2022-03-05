@@ -1,4 +1,4 @@
-package archimedes.base_middleware;
+package org.archimedes.datay;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
