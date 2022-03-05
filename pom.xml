@@ -8,7 +8,7 @@
 
     <packaging>pom</packaging>
 
-    <name>base-middleware</name>
+    <name>archimedes</name>
     <url>http://maven.apache.org</url>
 
     <properties>
