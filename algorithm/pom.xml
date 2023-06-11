@@ -9,10 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>archimedes-datay</artifactId>
-    <dependencies>
-
-    </dependencies>
+    <artifactId>algorithm</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
