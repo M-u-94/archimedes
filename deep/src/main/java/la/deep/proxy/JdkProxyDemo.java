@@ -1,6 +1,8 @@
 package la.deep.proxy;
 
 import lombok.extern.slf4j.Slf4j;
+import org.archimedes.common.service.IDemoDaoTarget;
+import org.archimedes.common.service.impl.DemoDaoTarget;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

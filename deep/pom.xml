@@ -8,6 +8,12 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>deep</artifactId>
     <dependencies>
+
+        <dependency>
+            <groupId>org.archimedes</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
        <!-- <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -29,7 +35,7 @@
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.2.0</version>
+            <version>3.3.0</version>
         </dependency>
     </dependencies>
 </project>

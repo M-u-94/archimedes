@@ -5,6 +5,7 @@ import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
+import org.archimedes.common.service.impl.DemoDaoTarget;
 
 import java.lang.reflect.Method;
 
@@ -15,7 +16,6 @@ import java.lang.reflect.Method;
  * 3、反射实例的方式比class.newInstance效率更高
  * 参考：https://segmentfault.com/a/1190000041619989
  */
-// TODO: 2023/6/10 日志没生效
 @Slf4j
 public class CglibProxyDemo {
 
@@ -28,7 +28,6 @@ public class CglibProxyDemo {
         enhancer.setCallback(new DemoMethodInterceptor());
         DemoDaoTarget proxyObj = (DemoDaoTarget)enhancer.create();
         proxyObj.save("hello world!");
-        System.out.println();
     }
 
 

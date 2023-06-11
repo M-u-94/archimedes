@@ -11,7 +11,11 @@
 
     <artifactId>archimedes-datay</artifactId>
     <dependencies>
-
+        <dependency>
+            <groupId>org.archimedes</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <properties>
