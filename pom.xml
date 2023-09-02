@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.archimedes</groupId>
+    <groupId>la.archimedes</groupId>
     <artifactId>archimedes-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -21,8 +21,7 @@
     <modules>
         <module>archimedes-datay</module>
         <module>algorithm</module>
-        <module>deep</module>
-        <module>springbootdeep</module>
+        <module>jse</module>
         <module>common</module>
     </modules>
 
@@ -61,22 +60,38 @@
             <version>5.7.17</version>
         </dependency>
 
+        <!--<dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>2.0.32</version>
+        </dependency>-->
+
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+            <!--feign begin-->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
                 <version>2.2.2.RELEASE</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>spring-boot-starter-logging</artifactId>
-                        <groupId>org.springframework.boot</groupId>
-                    </exclusion>
-                </exclusions>
             </dependency>
+
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-okhttp</artifactId>
+                <version>12.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-httpclient</artifactId>
+                <version>12.3</version>
+            </dependency>
+
+            <!--feign end-->
+
+
         </dependencies>
     </dependencyManagement>
 </project>

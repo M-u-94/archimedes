@@ -8,6 +8,10 @@
 ## module structure
 1. archimedes-datay
 - memory and disk manage related module,including memory-mapping、data compression、
-  checksum algorithm
+checksum algorithm
+
 2. algorithm 
-- 算法联系
+- algorithm practice
+
+3. deep
+- learning the underlying principles of java
