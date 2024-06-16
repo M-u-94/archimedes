@@ -10,7 +10,7 @@
 - memory and disk manage related module,including memory-mapping、data compression、
 checksum algorithm
 
-2. algorithm 
+2. [algorithm]() 
 - algorithm practice
 
 3. deep
