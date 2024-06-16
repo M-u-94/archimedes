@@ -54,18 +54,16 @@ public class Condition01 {
     volatile int cnt = 0;
     volatile boolean terminated = false;
     //任务数量
-    final int taskNbr = 3;
+    final int taskCount = 3;
 
     @Test
     public void multiThreadPrintInSequence() throws InterruptedException {
         Condition condition = lock.newCondition();
         CountDownLatch latch = new CountDownLatch(3);
-        PrintTask task0 = new PrintTask("任务0", 0, condition, latch);
-        PrintTask task1 = new PrintTask("任务1", 1, condition, latch);
-        PrintTask task2 = new PrintTask("任务2", 2, condition, latch);
-        new Thread(task0).start();
-        new Thread(task1).start();
-        new Thread(task2).start();
+        //实际线程的启动顺序是不可预测的，即使大部分情况下按照编辑顺序启动
+        new Thread(new PrintTask("任务0", 0, condition, latch)).start();
+        new Thread(new PrintTask("任务1", 1, condition, latch)).start();
+        new Thread(new PrintTask("任务2", 2, condition, latch)).start();
         log.info("所有线程已经启动，等待结果");
         latch.await();
         log.info("执行结束，当前的计数器是{}，终止状态是:{}",cnt,terminated);
@@ -84,15 +82,17 @@ public class Condition01 {
         public void run() {
             lock.lock();
             try {
-                for (; ; ) {
-                    checkTerminateCondition();
-                    if (terminated) {
+                while (!terminated) {
+                    if (cnt >= 20) {
+                        terminated = true;
                         return;
                     }
-                    if (cnt % taskNbr == nbr) {
+                    if (cnt % taskCount == nbr) {
                         log.info("线程{}打印数字:{}", name, cnt);
                         cnt++;
                     }else{
+                        //不应该进入这里，否则意味着浪费资源且执行时间不稳定
+                        //还是存在进入的情况，说明不能只依赖公平锁?
                         log.warn("线程{}不能打印数字{}，需要休眠",name,cnt);
                     }
                     //唤醒其他线程，但是需要自己释放了lock其他线程才能真正起来（竞争到lock的那个线程）
@@ -110,20 +110,12 @@ public class Condition01 {
 
                 }
             } finally {
-                log.info("任务{}已结束",this.nbr);
                 //需要唤醒最后那个任务
                 condition.signalAll();
                 lock.unlock();
                 latch.countDown();
+                log.info("任务{}已结束",this.nbr);
             }
-        }
-
-
-        private boolean checkTerminateCondition() {
-            if (cnt >= 20) {
-                terminated = true;
-            }
-            return terminated;
         }
 
     }
